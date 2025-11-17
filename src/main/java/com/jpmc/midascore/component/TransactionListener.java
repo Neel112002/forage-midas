@@ -8,14 +8,18 @@ import com.jpmc.midascore.foundation.Transaction;
 @Component
 public class TransactionListener {
 
-    private int counter = 0;
+    private final TransactionService service;
 
+    public TransactionListener(TransactionService service) {
+        this.service = service;
+    }
+
+    // FIXED: added groupId = "midas-core"
     @KafkaListener(
             topics = "${general.kafka-topic}",
-            groupId = "midas-core-consumer"
+            groupId = "midas-core"
     )
-    public void handleTransaction(Transaction transaction) {
-        counter++;
-        System.out.println("TX #" + counter + " → amount = " + transaction.getAmount());
+    public void receive(Transaction tx) {
+        service.process(tx);
     }
 }
