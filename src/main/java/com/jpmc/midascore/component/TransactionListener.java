@@ -19,6 +19,10 @@ public class TransactionListener {
             groupId = "midas-core"
     )
     public void receive(Transaction tx) {
+
+        // 🔥 DEBUG: proves Kafka consumer is working
+        System.out.println("🔥 KAFKA CONSUMED TRANSACTION: " + tx);
+
         service.process(tx);
     }
 }

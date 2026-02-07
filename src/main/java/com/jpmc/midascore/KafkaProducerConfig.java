@@ -17,22 +17,23 @@ import java.util.Map;
 public class KafkaProducerConfig {
 
     @Bean
-    public ProducerFactory<String, Transaction> transactionProducerFactory(KafkaProperties kafkaProperties) {
-        // Start with Spring Boot’s default producer properties (including embedded Kafka bootstrap server)
-        Map<String, Object> props = new HashMap<>(kafkaProperties.buildProducerProperties());
+    public ProducerFactory<String, Transaction> transactionProducerFactory(
+            KafkaProperties kafkaProperties) {
 
-        // Explicitly use String for keys and JSON for Transaction values
+        Map<String, Object> props =
+                new HashMap<>(kafkaProperties.buildProducerProperties());
+
         return new DefaultKafkaProducerFactory<>(
                 props,
                 new StringSerializer(),
-                new JsonSerializer<Transaction>()
+                new JsonSerializer<>()
         );
     }
 
     @Bean
     public KafkaTemplate<String, Transaction> kafkaTemplate(
-            ProducerFactory<String, Transaction> transactionProducerFactory
-    ) {
+            ProducerFactory<String, Transaction> transactionProducerFactory) {
+
         return new KafkaTemplate<>(transactionProducerFactory);
     }
 }
