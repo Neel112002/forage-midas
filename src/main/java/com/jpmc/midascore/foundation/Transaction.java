@@ -43,11 +43,8 @@ public class Transaction {
 
     @Override
     public String toString() {
-        return "Transaction {senderId=" + senderId + ", recipientId=" + recipientId + ", amount=" + amount + "}";
-    }
-
-    public long sender() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'sender'");
+        return "Transaction {senderId=" + senderId +
+               ", recipientId=" + recipientId +
+               ", amount=" + amount + "}";
     }
 }

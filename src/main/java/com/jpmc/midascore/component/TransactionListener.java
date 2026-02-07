@@ -14,7 +14,6 @@ public class TransactionListener {
         this.service = service;
     }
 
-    // FIXED: added groupId = "midas-core"
     @KafkaListener(
             topics = "${general.kafka-topic}",
             groupId = "midas-core"
