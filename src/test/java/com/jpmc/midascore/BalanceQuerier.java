@@ -1,9 +1,10 @@
 package com.jpmc.midascore;
 
-import com.jpmc.midascore.foundation.Balance;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+
+import com.jpmc.midascore.foundation.Balance;
 
 @Component
 public class BalanceQuerier {
